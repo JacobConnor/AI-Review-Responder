@@ -1,3 +1,5 @@
+<!-- side_panel.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +16,44 @@
     <p id="selectedReview">Loading...</p>
   </div>
 
-  <!-- Compose Textbox -->
-  <div id="composeContainer">
-    <h2>Generated Response:</h2>
-    <div id="composeTextbox">Your response will appear here...</div>
-    <button id="generateResponse">Generate Response</button>
-  </div>
+ <!-- Sentiment Selection -->
+<div>
+  <h2>Positive or Negative Review:</h2>
+  <label><input type="radio" name="sentiment" value="positive" checked> Positive</label>
+  <label><input type="radio" name="sentiment" value="negative"> Negative</label>
+</div>
+<textarea id="input">Hello, world!</textarea>
+<p>I'm <span>not sure what language this is</span>.</p>
+<!-- Tone Selection -->
+<div>
+  <h2>Tone:</h2>
+  <select id="toneSelect">
+      <option value="friendly">Friendly</option>
+      <option value="professional">Professional</option>
+      <option value="casual">Casual</option>
+      <option value="formal">Formal</option>
+      <option value="enthusiastic">Enthusiastic</option>
+  </select>
+</div>
+
+<!-- Response Length -->
+<div>
+  <h2>Response Length:</h2>
+  <label><input type="radio" name="length" value="short" checked> Short (1-2 sentences)</label>
+  <label><input type="radio" name="length" value="medium"> Medium (3-4 sentences)</label>
+  <label><input type="radio" name="length" value="long"> Long (5+ sentences)</label>
+</div>
+
+
+  <!-- Generate Response Button -->
+  <button id="generateResponse">Generate Response</button>
+  <button id="copyResponse">Copy Response</button>
+  <!-- Loading Indicator -->
+  
+
+  <!-- AI Response -->
+  <h2>AI Response:</h2>
+  <pre id="aiResponse"><div id="loading" style="display: none;">Processing...</div></pre>
 
   <script src="side_panel.js"></script>
 </body>
