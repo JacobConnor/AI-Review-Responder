@@ -1,7 +1,9 @@
+// service_worker.js
+
 function setupContextMenu() {
     chrome.contextMenus.create({
         id: 'generate-response',
-        title: 'Generate Response',
+        title: 'Generate AI Review Response',
         contexts: ['selection']
     });
 }
@@ -15,10 +17,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         const selectedText = info.selectionText.trim();
 
         if (selectedText) {
-            chrome.storage.session.set({ selectedText }, () => {
+            // Store the selected text in chrome.storage.session
+            chrome.storage.local.set({ selectedText }, () => {
                 console.log('Selected text stored:', selectedText);
-            });
 
+                // Open the side panel
             chrome.sidePanel.open({ tabId: tab.id }, () => {
                 if (chrome.runtime.lastError) {
                     console.error(chrome.runtime.lastError.message);
@@ -26,9 +29,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
                     console.log('Side panel opened.');
                 }
             });
+
+            });
+
+            
         }
     }
 });
-
-
-
